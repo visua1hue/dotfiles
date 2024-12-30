@@ -1,4 +1,4 @@
-# --- General Adjustments ---
+# General Adjustments:
 
 shell-integration = zsh
 copy-on-select = true
@@ -19,6 +19,9 @@ macos-icon-frame = plastic
 macos-icon-ghost-color = #59f8f8
 macos-icon-screen-color = #000000
 
-# --- Keybindings ---
+# Keybindings: ghostty +list-keybinds --default
 
 keybind = command+r=reload_config
+keybind = command+backspace=esc:w
+keybind = command+right=new_split:right
+keybind = command+down=new_split:down
