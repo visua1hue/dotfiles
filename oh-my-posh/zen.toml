@@ -3,14 +3,14 @@ version = 3
 final_space = true
 
 [secondary_prompt]
-  template = '›› '
-  foreground = '#606bd2'
+  template = ':: '
+  foreground = '#aaa0fa'
   background = 'transparent'
 
 [transient_prompt]
-  template = '› '
+  template = ': '
   background = 'transparent'
-  foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}#606bd2{{end}}']
+  foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}#aaa0fa{{end}}']
 
 [[blocks]]
   type = 'prompt'
@@ -62,7 +62,7 @@ final_space = true
   newline = true
 
   [[blocks.segments]]
-    template = '›'
+    template = ':'
     background = 'transparent'
     type = 'text'
     style = 'plain'

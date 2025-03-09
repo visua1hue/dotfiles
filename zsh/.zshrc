@@ -62,17 +62,18 @@ zmodload zsh/nearcolor
 
 # Syntax highlighting colors
 typeset -A ZSH_HIGHLIGHT_STYLES
-ZSH_HIGHLIGHT_STYLES[command]='fg=#59f8f8'
-ZSH_HIGHLIGHT_STYLES[alias]='fg=#59f8f8'
-ZSH_HIGHLIGHT_STYLES[builtin]='fg=#59f8f8'
-ZSH_HIGHLIGHT_STYLES[function]='fg=#59f8f8'
-ZSH_HIGHLIGHT_STYLES[precommand]='fg=#59f8f8'
-ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=#59f8f8'
+ZSH_HIGHLIGHT_STYLES[command]='fg=#83d6c5'
+ZSH_HIGHLIGHT_STYLES[alias]='fg=#83d6c5'
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=#83d6c5'
+ZSH_HIGHLIGHT_STYLES[function]='fg=#83d6c5'
+ZSH_HIGHLIGHT_STYLES[precommand]='fg=#83d6c5'
+ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=#83d6c5'
 
 # Aliases
 alias ls='ls --color'
 alias lsa='ls -a --color'
 alias c='clear'
+alias ..='cd ..'
 
 # Shell integrations
 eval "$(fzf --zsh)"
@@ -82,3 +83,6 @@ eval "$(zoxide init --cmd cd zsh)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$(brew --prefix nvm)/nvm.sh" ] && \. "$(brew --prefix nvm)/nvm.sh"
 [ -s "$(brew --prefix nvm)/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix nvm)/etc/bash_completion.d/nvm"
+
+# Added by Windsurf
+export PATH="/Users/visualhue/.codeium/windsurf/bin:$PATH"
