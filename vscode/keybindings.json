@@ -29,5 +29,9 @@
     "key": "alt+cmd+/",
     "command": "editor.action.blockComment",
     "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+alt+c",
+    "command": "workbench.files.action.compareFileWith"
   }
 ]
