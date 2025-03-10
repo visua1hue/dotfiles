@@ -60,7 +60,7 @@
     "id": "174073799192097d7byhi1",
     "name": "Default",
     "behavior": "create",
-    "noteNameFormat": "☁️ {{title}}",
+    "noteNameFormat": "++ {{title}}",
     "path": "Unsorted",
     "noteContentFormat": "\n{{content}}",
     "context": "",
