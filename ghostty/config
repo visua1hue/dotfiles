@@ -8,7 +8,7 @@ mouse-scroll-multiplier = 2
 window-save-state = always
 window-colorspace = "display-p3"
 
-theme = NvimDark
+theme = tokyonight
 font-family = JetBrainsMono Nerd Font Mono
 font-size = 20
 cursor-style = block
