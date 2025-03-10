@@ -35,7 +35,6 @@ zinit cdreplay -q
 bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
-bindkey '^[w' kill-region
 
 # History configuration
 HISTSIZE=5000
@@ -72,7 +71,6 @@ ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=#83d6c5'
 # Aliases
 alias ls='ls --color'
 alias lsa='ls -a --color'
-alias c='clear'
 alias ..='cd ..'
 
 # Shell integrations
@@ -83,6 +81,3 @@ eval "$(zoxide init --cmd cd zsh)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$(brew --prefix nvm)/nvm.sh" ] && \. "$(brew --prefix nvm)/nvm.sh"
 [ -s "$(brew --prefix nvm)/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix nvm)/etc/bash_completion.d/nvm"
-
-# Added by Windsurf
-export PATH="/Users/visualhue/.codeium/windsurf/bin:$PATH"
