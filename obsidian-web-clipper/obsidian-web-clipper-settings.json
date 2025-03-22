@@ -2,6 +2,7 @@
   "general_settings": {
     "betaFeatures": false,
     "legacyMode": false,
+    "saveBehavior": "addToObsidian",
     "showMoreActionsButton": false,
     "silentOpen": true
   },
@@ -18,6 +19,7 @@
     "models": [],
     "providers": []
   },
+  "migrationVersion": 1,
   "property_types": [
     {
       "defaultValue": "{{title}}",
@@ -50,8 +52,15 @@
       "type": "multitext"
     }
   ],
+  "reader_settings": {
+    "fontSize": 1.5,
+    "lineHeight": 1.6,
+    "maxWidth": 38,
+    "theme": "default",
+    "themeMode": "auto"
+  },
   "stats": {
-    "addToObsidian": 7,
+    "addToObsidian": 9,
     "copyToClipboard": 0,
     "saveFile": 0,
     "share": 0
@@ -61,7 +70,7 @@
     "name": "Default",
     "behavior": "create",
     "noteNameFormat": "++ {{title}}",
-    "path": "Unsorted",
+    "path": "/",
     "noteContentFormat": "\n{{content}}",
     "context": "",
     "properties": [
@@ -74,7 +83,7 @@
       {
         "id": "1740737991920b5wjsj0lk",
         "name": "created",
-        "value": "{{date}}:{{time}}",
+        "value": "{{time}}",
         "type": "date"
       }
     ],
