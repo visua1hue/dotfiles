@@ -60,37 +60,36 @@
     "themeMode": "auto"
   },
   "stats": {
-    "addToObsidian": 9,
+    "addToObsidian": 17,
     "copyToClipboard": 0,
     "saveFile": 0,
     "share": 0
   },
-  "template_174073799192097d7byhi1": {
-    "id": "174073799192097d7byhi1",
-    "name": "Default",
+  "template_1750260129988ybmdc5m4p": {
+    "id": "1750260129988ybmdc5m4p",
+    "name": "X Sync",
     "behavior": "create",
     "noteNameFormat": "++ {{title}}",
-    "path": "/",
-    "noteContentFormat": "\n{{content}}",
+    "path": "Content/Threads (local)",
+    "noteContentFormat": "## Original Post\n\n>[!quote] {{content|split:\"\\n\\n\"|first}}\n{{selectorHtml:article[tabindex=\"-1\"] div[data-testid=\"tweetText\"]|first|strip_tags:\"a, img\"|strip_attr:\"href, alt, style, draggable\"|replace:\"\\n\":\"<br>\"|replace:\"<img alt=\\\"\",\"\"|replace:\"\\\" draggable=\\\"false\\\">\":\"\"|markdown|replace:\"\\#\":\"\\\\#\"|blockquote}}\n>\n{{selectorHtml:article[tabindex=\"-1\"] video, article[tabindex=\"-1\"] img[draggable=\"true\"]:not(img[src*=\"profile_images\"])|join:\"<br>\"|strip_attr:\"poster, src\"|replace:(\"<video poster=\":\"<img src=\",\"</video>\":\"\")|replace:\"/&amp;name=([^\\\"]+)/g\":\"&amp;name=large\"|markdown|blockquote}}",
     "context": "",
-    "properties": [
-      {
-        "id": "17407379919206pi3e7vlq",
-        "name": "source",
-        "value": "{{url}}",
-        "type": "text"
-      },
-      {
-        "id": "1740737991920b5wjsj0lk",
-        "name": "created",
-        "value": "{{time}}",
-        "type": "date"
-      }
-    ],
+    "properties": [],
+    "triggers": []
+  },
+  "template_175026117433746gifc2as": {
+    "id": "175026117433746gifc2as",
+    "name": "X Sync (w/ Replies)",
+    "behavior": "create",
+    "noteNameFormat": "++ {{title}}",
+    "path": "Content/Threads (local)",
+    "noteContentFormat": "## Original Post\n\n>[!quote] {{content|split:\"\\n\\n\"|first}}\n{{selectorHtml:article[tabindex=\"-1\"] div[data-testid=\"tweetText\"]|first|strip_tags:\"a, img\"|strip_attr:\"href, alt, style, draggable\"|replace:\"\\n\":\"<br>\"|replace:\"<img alt=\\\"\",\"\"|replace:\"\\\" draggable=\\\"false\\\">\":\"\"|markdown|replace:\"\\#\":\"\\\\#\"|blockquote}}\n>\n{{selectorHtml:article[tabindex=\"-1\"] video, article[tabindex=\"-1\"] img[draggable=\"true\"]:not(img[src*=\"profile_images\"])|join:\"<br>\"|strip_attr:\"poster, src\"|replace:(\"<video poster=\":\"<img src=\",\"</video>\":\"\")|replace:\"/&amp;name=([^\\\"]+)/g\":\"&amp;name=large\"|markdown|blockquote}}\n\n## Replies\n\n{{content|split:\"---\"|slice:1|map:item => \"> [!quote]${item}\"|template:\"${str}\"|replace:\"> [!quote]\\n\":\"> [!quote] \"|replace:\"\\#\":\"\\\\#\"}}",
+    "context": "",
+    "properties": [],
     "triggers": []
   },
   "template_list": [
-    "174073799192097d7byhi1"
+    "1750260129988ybmdc5m4p",
+    "175026117433746gifc2as"
   ],
   "vaults": []
 }
