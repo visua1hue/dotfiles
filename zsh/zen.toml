@@ -1,6 +1,4 @@
-console_title_template = '{{ .Shell }} in {{ .Folder }}'
 version = 3
-final_space = true
 
 [secondary_prompt]
   template = ':: '
@@ -9,8 +7,8 @@ final_space = true
 
 [transient_prompt]
   template = ': '
-  background = 'transparent'
   foreground = '#aaa0fa'
+  background = 'transparent'
 
 [[blocks]]
   type = 'prompt'
@@ -19,7 +17,7 @@ final_space = true
 
   [[blocks.segments]]
     template = '{{ .Path }}'
-    foreground = 'white'
+    foreground = '#ffffff'
     background = 'transparent'
     type = 'path'
     style = 'plain'
@@ -47,7 +45,7 @@ final_space = true
 
   [[blocks.segments]]
     template = '{{ .FormattedMs }}'
-    foreground = 'white'
+    foreground = '#ffffff'
     background = 'transparent'
     type = 'executiontime'
     style = 'plain'
@@ -63,10 +61,10 @@ final_space = true
 
   [[blocks.segments]]
     template = ':'
+    foreground = '#aaa0fa'
     background = 'transparent'
     type = 'text'
     style = 'plain'
-    foreground = '#aaa0fa'
 
     [blocks.segments.properties]
       cache_duration = 'none'
