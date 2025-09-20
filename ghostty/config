@@ -8,7 +8,7 @@ mouse-scroll-multiplier = 2
 window-save-state = always
 window-colorspace = "display-p3"
 
-theme = zenbones
+theme = Cursor Dark
 font-family = JetBrainsMono Nerd Font Mono
 font-size = 20
 cursor-style = block
@@ -16,13 +16,6 @@ cursor-color = #292929
 adjust-cursor-thickness = 20
 window-padding-y = 10
 window-padding-x = 10
-
-macos-icon = custom-style
-macos-icon-frame = plastic
-macos-icon-ghost-color = #ffffff
-macos-icon-screen-color = #000000
-
-# background = #141414
 
 # Keybindings:
 # https://ghostty.org/docs/config/keybind#modifiers
