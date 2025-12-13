@@ -1,0 +1,55 @@
+[
+  {
+    "key": "ctrl+.",
+    "command": "workbench.action.openGlobalKeybindings"
+  },
+  {
+    "key": "ctrl+,",
+    "command": "workbench.action.openGlobalSettings"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "workbench.action.showCommands"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "workbench.action.openRecent"
+  },
+  {
+    "key": "ctrl+/",
+    "command": "editor.action.commentLine",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "alt+ctrl+/",
+    "command": "editor.action.blockComment",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "shift shift",
+    "command": "workbench.action.quickOpen"
+  },
+  {
+    "key": "shift+/",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "ctrl+shift+/",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+alt+c",
+    "command": "workbench.files.action.compareFileWith"
+  },
+  {
+    "key": "ctrl+[",
+    "command": "editor.foldLevel2",
+    "when": "editorTextFocus && resourceExtname == .json"
+  },
+  {
+    "key": "ctrl+]",
+    "command": "editor.unfoldRecursively",
+    "when": "editorTextFocus && resourceExtname == .json"
+  }
+]

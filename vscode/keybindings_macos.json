@@ -8,17 +8,25 @@
     "command": "workbench.action.openGlobalSettings"
   },
   {
+    "key": "cmd+p",
+    "command": "workbench.action.showCommands"
+  },
+  {
     "key": "shift shift",
     "command": "workbench.action.quickOpen"
   },
   {
-    "key": "shift+/",
-    "command": "workbench.action.terminal.toggleTerminal",
-    "when": "terminal.active"
-  },
-  {
     "key": "cmd+r",
     "command": "workbench.action.openRecent"
+  },
+  {
+    "key": "shift+/",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "ctrl+shift+/",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalFocus"
   },
   {
     "key": "cmd+/",
@@ -33,5 +41,15 @@
   {
     "key": "ctrl+alt+c",
     "command": "workbench.files.action.compareFileWith"
+  },
+  {
+    "key": "cmd+[",
+    "command": "editor.foldLevel2",
+    "when": "editorTextFocus && resourceExtname == .json"
+  },
+  {
+    "key": "cmd+]",
+    "command": "editor.unfoldRecursively",
+    "when": "editorTextFocus && resourceExtname == .json"
   }
 ]
