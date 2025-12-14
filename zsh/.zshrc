@@ -6,7 +6,7 @@ if [[ -f "/opt/homebrew/bin/brew" ]]; then
 fi
 
 # Oh My Posh prompt
-eval "$(oh-my-posh init zsh --config ~/zen.toml)"
+eval "$(oh-my-posh init zsh --config ~/.config/zsh/zen.toml)"
 
 # Zinit plugin manager setup
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -19,7 +19,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 # Load plugins, completions, visual enhancements, integrations
 source ~/.config/zsh/modules.zsh
 # Load keyboard bindings, history and aliases
-source ~/.config/zsh/keyboard_bindings.zsh
+source ~/.config/zsh/keybindings.zsh
 
 # Node Version Manager (NVM)
 export NVM_DIR="$HOME/.nvm"
