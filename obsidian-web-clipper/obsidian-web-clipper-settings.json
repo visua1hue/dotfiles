@@ -1,0 +1,95 @@
+{
+  "general_settings": {
+    "betaFeatures": false,
+    "legacyMode": false,
+    "saveBehavior": "addToObsidian",
+    "showMoreActionsButton": false,
+    "silentOpen": true
+  },
+  "highlighter_settings": {
+    "alwaysShowHighlights": true,
+    "highlightBehavior": "highlight-inline",
+    "highlighterEnabled": true
+  },
+  "interpreter_settings": {
+    "defaultPromptContext": "",
+    "interpreterAutoRun": false,
+    "interpreterEnabled": false,
+    "interpreterModel": "",
+    "models": [],
+    "providers": []
+  },
+  "migrationVersion": 1,
+  "property_types": [
+    {
+      "defaultValue": "{{title}}",
+      "name": "title",
+      "type": "text"
+    },
+    {
+      "defaultValue": "{{url}}",
+      "name": "source",
+      "type": "text"
+    },
+    {
+      "defaultValue": "{{author|split:\", \"|wikilink|join}}",
+      "name": "author",
+      "type": "multitext"
+    },
+    {
+      "defaultValue": "{{published}}",
+      "name": "published",
+      "type": "date"
+    },
+    {
+      "defaultValue": "{{date}}",
+      "name": "created",
+      "type": "date"
+    },
+    {
+      "defaultValue": "clippings",
+      "name": "tags",
+      "type": "multitext"
+    }
+  ],
+  "reader_settings": {
+    "fontSize": 1.5,
+    "lineHeight": 1.6,
+    "maxWidth": 38,
+    "theme": "default",
+    "themeMode": "auto"
+  },
+  "stats": {
+    "addToObsidian": 57,
+    "copyToClipboard": 0,
+    "saveFile": 0,
+    "share": 0
+  },
+  "template_1750260129988ybmdc5m4p": {
+    "id": "1750260129988ybmdc5m4p",
+    "name": "Twitter/X - Sync ",
+    "behavior": "create",
+    "noteNameFormat": "++ {{title}} - {{url|split:\"/\"|last}}",
+    "path": "Unsorted",
+    "noteContentFormat": "## Original Post\n\n>[!quote] {{content|split:\"\\n\\n\"|first}}\n{{selectorHtml:article[tabindex=\"-1\"] div[data-testid=\"tweetText\"]|first|strip_tags:\"a, img\"|strip_attr:\"href, alt, style, draggable\"|replace:\"\\n\":\"<br>\"|replace:\"<img alt=\\\"\",\"\"|replace:\"\\\" draggable=\\\"false\\\">\":\"\"|markdown|replace:\"\\#\":\"\\\\#\"|blockquote}}\n>\n{{selectorHtml:article[tabindex=\"-1\"] video, article[tabindex=\"-1\"] img[draggable=\"true\"]:not(img[src*=\"profile_images\"])|join:\"<br>\"|strip_attr:\"poster, src\"|replace:(\"<video poster=\":\"<img src=\",\"</video>\":\"\")|replace:\"/&amp;name=([^\\\"]+)/g\":\"&amp;name=large\"|markdown|blockquote}}",
+    "context": "",
+    "properties": [],
+    "triggers": []
+  },
+  "template_1759335884487fq0b9c7rd": {
+    "id": "1759335884487fq0b9c7rd",
+    "name": "Web Sync",
+    "behavior": "create",
+    "noteNameFormat": "{{title}}",
+    "path": "Unsorted",
+    "noteContentFormat": "{{content}}",
+    "properties": [],
+    "triggers": [],
+    "context": ""
+  },
+  "template_list": [
+    "1759335884487fq0b9c7rd",
+    "1750260129988ybmdc5m4p"
+  ],
+  "vaults": []
+}
