@@ -8,6 +8,10 @@
     "command": "workbench.action.openGlobalSettings"
   },
   {
+    "key": "cmd+o",
+    "command": "workbench.action.files.openFileFolder"
+  },
+  {
     "key": "cmd+p",
     "command": "workbench.action.showCommands"
   },
