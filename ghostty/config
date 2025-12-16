@@ -1,8 +1,14 @@
+# Build:
+# https://ghostty.org/docs/install/pre#macos
+
+auto-update-channel = tip
+
 # General Adjustments:
 # https://ghostty.org/docs/config/reference
 
 shell-integration = zsh
 copy-on-select = true
+confirm-close-surface=false
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 2
 window-save-state = always
@@ -19,7 +25,7 @@ theme = Cursor Dark
 font-family = JetBrainsMono Nerd Font Mono
 font-size = 20
 
-confirm-close-surface=false
+macos-titlebar-style = tabs
 macos-window-shadow = false
 macos-icon = xray
 
@@ -28,13 +34,14 @@ macos-icon = xray
 # https://ghostty.org/docs/config/keybind/reference
 
 keybind = command+r=reload_config
-keybind = command+backspace=esc:w
+keybind = cmd+backspace=text:\x15
 keybind = command+k=clear_screen
 
-keybind = command+shift+right=esc:f
+keybind = command+left=text:\x01
+keybind = command+right=text:\x05
 keybind = command+shift+left=esc:b
+keybind = command+shift+right=esc:f
 
-keybind = command+right=new_split:right
 keybind = command+down=new_split:down
 
 keybind = shift>shift=toggle_command_palette
