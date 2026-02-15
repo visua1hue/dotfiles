@@ -1,17 +1,30 @@
 # //////////////////// ZSH Modules ////////////////////////////
 
 # Plugin Manager: Zinit and OMZ Snippets
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-completions
+zinit wait lucid for \
+    atload"_zsh_autosuggest_start" \
+        zsh-users/zsh-autosuggestions \
+    blockf atpull'zinit creinstall -q .' \
+        zsh-users/zsh-completions
 
-zinit snippet OMZL::git.zsh
-zinit snippet OMZP::git
-zinit snippet OMZP::command-not-found
+zinit wait lucid atinit"zicompinit; zicdreplay" for \
+    zsh-users/zsh-syntax-highlighting
+
+
+zinit wait lucid for \
+    OMZL::git.zsh \
+    OMZP::git \
+    OMZP::command-not-found
+
 
 # ZSH Completion Adjustments
-autoload -Uz compinit && compinit
-zinit cdreplay -q
+autoload -Uz compinit
+if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null) ]; then
+  compinit
+else
+  compinit -C
+fi
+
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
