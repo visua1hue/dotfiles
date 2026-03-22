@@ -1,6 +1,4 @@
-# //////////////////// Keyboard, History, Aliases ////////////////////////////
-
-# Keybindings & History
+# [Keybindings & History]
 bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
@@ -16,11 +14,13 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
-# Aliases - Improved Version
+# [Aliases]
 alias ls='ls --color'
 alias lsa='ls -a --color'
 
 alias ..='cd ..'
+
+alias cc='claude'
 
 # fd : Fast replacement for find
 alias fdr='fd --type f'              # Recursively list files

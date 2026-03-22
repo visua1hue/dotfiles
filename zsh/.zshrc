@@ -1,14 +1,13 @@
-# //////////////////// ZSH Configuration ////////////////////////////
+# [Init]
 
-# Homebrew initialization (macOS)
+# Homebrew
 if [[ -f "/opt/homebrew/bin/brew" ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Oh My Posh prompt
-eval "$(oh-my-posh init zsh --config ~/.config/zsh/zen.toml)"
+export _ZO_DOCTOR=0
 
-# Zinit plugin manager setup
+# Zinit plugin manager
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 if [ ! -d "$ZINIT_HOME" ]; then
     mkdir -p "$(dirname "$ZINIT_HOME")"
@@ -16,22 +15,35 @@ if [ ! -d "$ZINIT_HOME" ]; then
 fi
 source "${ZINIT_HOME}/zinit.zsh"
 
-# Load plugins, completions, visual enhancements, integrations
-source ~/.config/zsh/modules.zsh
-# Load keyboard bindings, history and aliases
-source ~/.config/zsh/keybindings.zsh
-
-# Node Version Manager (NVM)
+# NVM (eager in Claude Code / non-interactive, lazy otherwise)
 export NVM_DIR="$HOME/.nvm"
-# Placeholder functions that load NVM on first use
-_load_nvm() {
-    unset -f nvm node npm npx pnpm
-    [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"
-}
 
-nvm()  { _load_nvm && nvm "$@"; }
-node() { _load_nvm && node "$@"; }
-npm()  { _load_nvm && npm "$@"; }
-npx()  { _load_nvm && npx "$@"; }
-pnpm() { _load_nvm && pnpm "$@"; }
-export PATH="$HOME/.local/bin:$PATH"
+if [[ -n "$CLAUDE_CODE" || -n "$CLAUDE_CODE_TERM" || ! -o interactive ]]; then
+    [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"
+else
+    _load_nvm() {
+        unset -f nvm node npm npx pnpm
+        [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"
+    }
+    nvm()  { _load_nvm && nvm "$@"; }
+    node() { _load_nvm && node "$@"; }
+    npm()  { _load_nvm && npm "$@"; }
+    npx()  { _load_nvm && npx "$@"; }
+    pnpm() { _load_nvm && pnpm "$@"; }
+fi
+
+# [Interactive Shell]
+
+eval "$(oh-my-posh init zsh --config ~/.config/zsh/zen.toml)"
+source ~/.config/zsh/modules.zsh
+source ~/.config/zsh/keybindings.zsh
+eval "$(zoxide init --cmd cd zsh)"
+[ -s "/Users/visualhue/.bun/_bun" ] && source "/Users/visualhue/.bun/_bun"
+
+# [PATH Exports]
+
+export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_ENV_HINTS=1
+export HOMEBREW_NO_AUTO_UPDATE=1
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$HOME/.local/bin:$BUN_INSTALL/bin:$PATH"

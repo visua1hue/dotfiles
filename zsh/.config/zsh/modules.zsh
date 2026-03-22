@@ -1,6 +1,4 @@
-# //////////////////// ZSH Modules ////////////////////////////
-
-# Plugin Manager: Zinit and OMZ Snippets
+# [ZSH Modules - Plugin Manager: Zinit and OMZ Snippets]
 zinit wait lucid for \
     atload"_zsh_autosuggest_start" \
         zsh-users/zsh-autosuggestions \
@@ -17,7 +15,7 @@ zinit wait lucid for \
     OMZP::command-not-found
 
 
-# ZSH Completion Adjustments
+# [ZSH Module - ZSH Completion]
 autoload -Uz compinit
 if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null) ]; then
   compinit
@@ -30,7 +28,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 
-# ZSH Prompt and Syntax (Visuals)
+# [ZSH Prompt and Syntax (Visuals)]
 zmodload zsh/nearcolor
 
 typeset -A ZSH_HIGHLIGHT_STYLES
@@ -40,6 +38,3 @@ ZSH_HIGHLIGHT_STYLES[builtin]='fg=#83d6c5'
 ZSH_HIGHLIGHT_STYLES[function]='fg=#83d6c5'
 ZSH_HIGHLIGHT_STYLES[precommand]='fg=#83d6c5'
 ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=#83d6c5'
-
-# Shell Integrations
-eval "$(zoxide init --cmd cd zsh)"
