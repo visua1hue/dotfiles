@@ -34,11 +34,13 @@ fi
 
 # [Interactive Shell]
 
-eval "$(oh-my-posh init zsh --config ~/.config/zsh/zen.toml)"
-source ~/.config/zsh/modules.zsh
-source ~/.config/zsh/keybindings.zsh
-eval "$(zoxide init --cmd cd zsh)"
-[ -s "/Users/visualhue/.bun/_bun" ] && source "/Users/visualhue/.bun/_bun"
+if [[ -o interactive ]]; then
+  eval "$(oh-my-posh init zsh --config ~/.config/zsh/zen.toml)"
+  source ~/.config/zsh/modules.zsh
+  source ~/.config/zsh/keybindings.zsh
+  eval "$(zoxide init --cmd cd zsh)"
+  [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+fi
 
 # [PATH Exports]
 
