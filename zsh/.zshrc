@@ -4,8 +4,9 @@
 if [[ -f "/opt/homebrew/bin/brew" ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
-
-export _ZO_DOCTOR=0
+export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_ENV_HINTS=1
+export HOMEBREW_NO_AUTO_UPDATE=1
 
 # Zinit plugin manager
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -21,8 +22,16 @@ export NVM_DIR="$HOME/.nvm"
 if [[ -n "$CLAUDE_CODE" || -n "$CLAUDE_CODE_TERM" || ! -o interactive ]]; then
     [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"
 else
+    () {
+        local ver=$(cat "$NVM_DIR/alias/default" 2>/dev/null)
+        [[ -f "$NVM_DIR/alias/$ver" ]] && ver=$(cat "$NVM_DIR/alias/$ver")
+        ver="${ver#v}"
+        local bin="$NVM_DIR/versions/node/v$ver/bin"
+        [[ -d "$bin" ]] && export PATH="$bin:$PATH"
+    }
+
     _load_nvm() {
-        unset -f nvm node npm npx pnpm
+        unset -f nvm node npm npx pnpm pi
         [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"
     }
     nvm()  { _load_nvm && nvm "$@"; }
@@ -32,20 +41,18 @@ else
     pnpm() { _load_nvm && pnpm "$@"; }
 fi
 
+# [PATH Exports]
+
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$HOME/.local/bin:$PATH"
+
 # [Interactive Shell]
 
 if [[ -o interactive ]]; then
   eval "$(oh-my-posh init zsh --config ~/.config/zsh/zen.toml)"
   source ~/.config/zsh/modules.zsh
   source ~/.config/zsh/keybindings.zsh
+  export _ZO_DOCTOR=0
   eval "$(zoxide init --cmd cd zsh)"
   [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 fi
-
-# [PATH Exports]
-
-export HOMEBREW_NO_ANALYTICS=1
-export HOMEBREW_NO_ENV_HINTS=1
-export HOMEBREW_NO_AUTO_UPDATE=1
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$HOME/.local/bin:$BUN_INSTALL/bin:$PATH"

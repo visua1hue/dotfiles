@@ -20,8 +20,6 @@ alias lsa='ls -a --color'
 
 alias ..='cd ..'
 
-alias cc='claude'
-
 # fd : Fast replacement for find
 alias fdr='fd --type f'              # Recursively list files
 alias fdd='fd --type d'              # Recursively list directories
