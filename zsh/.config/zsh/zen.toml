@@ -2,12 +2,12 @@ version = 3
 
 [secondary_prompt]
   template = ':: '
-  foreground = '#aaa0fa'
+  foreground = 'transparent'
   background = 'transparent'
 
 [transient_prompt]
   template = ': '
-  foreground = '#aaa0fa'
+  foreground = 'transparent'
   background = 'transparent'
 
 [[blocks]]
@@ -28,7 +28,7 @@ version = 3
 
   [[blocks.segments]]
     template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}↓{{ end }}{{ if gt .Ahead 0 }}↑{{ end }}</>'
-    foreground = 'p:grey'
+    foreground = '#a1a1aa'
     background = 'transparent'
     type = 'git'
     style = 'plain'
@@ -58,10 +58,11 @@ version = 3
   type = 'prompt'
   alignment = 'left'
   newline = true
+  force = true
 
   [[blocks.segments]]
-    template = ':'
-    foreground = '#aaa0fa'
+    template = ' '
+    foreground = 'transparent'
     background = 'transparent'
     type = 'text'
     style = 'plain'

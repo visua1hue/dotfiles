@@ -31,7 +31,7 @@ else
     }
 
     _load_nvm() {
-        unset -f nvm node npm npx pnpm pi
+        unset -f nvm node npm npx pnpm
         [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"
     }
     nvm()  { _load_nvm && nvm "$@"; }
@@ -44,15 +44,20 @@ fi
 # [PATH Exports]
 
 export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 # [Interactive Shell]
 
 if [[ -o interactive ]]; then
   eval "$(oh-my-posh init zsh --config ~/.config/zsh/zen.toml)"
+  precmd() { echo }
   source ~/.config/zsh/modules.zsh
   source ~/.config/zsh/keybindings.zsh
   export _ZO_DOCTOR=0
   eval "$(zoxide init --cmd cd zsh)"
   [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 fi
+
+# bun completions
+[ -s "/Users/visualhue/.bun/_bun" ] && source "/Users/visualhue/.bun/_bun"
