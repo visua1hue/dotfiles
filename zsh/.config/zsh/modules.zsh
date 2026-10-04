@@ -1,28 +1,14 @@
+# [ZSH Module - ZSH Completion]
+# sync on purpose: compinit inside zinit turbo causes repeated prompt redraws
+# full rebuild at most once a day, cached (-C) otherwise
+autoload -Uz compinit
+() { if (( $# )); then compinit -C; else compinit; touch ~/.zcompdump; fi } ~/.zcompdump(N.mh-24)
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
 # [ZSH Modules - Plugin Manager: Zinit and OMZ Snippets]
 zinit wait lucid for \
-    atload"_zsh_autosuggest_start" \
-        zsh-users/zsh-autosuggestions \
     blockf atpull'zinit creinstall -q .' \
-        zsh-users/zsh-completions
-
-zinit wait lucid for \
-    OMZP::command-not-found
-
-
-# [ZSH Module - ZSH Completion]
-autoload -Uz compinit
-if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null) ]; then
-  compinit
-else
-  compinit -C
-fi
-
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu no
-
-# [ZSH Module - Syntax Highlighting]
-zinit wait lucid for \
+        zsh-users/zsh-completions \
     atload"
         ZSH_HIGHLIGHT_STYLES[command]=fg=#ffffff
         ZSH_HIGHLIGHT_STYLES[arg0]=fg=#ffffff
@@ -33,4 +19,7 @@ zinit wait lucid for \
         ZSH_HIGHLIGHT_STYLES[default]=fg=#a1a1aa
         ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=#f87171
     " \
-    zsh-users/zsh-syntax-highlighting
+        zsh-users/zsh-syntax-highlighting \
+    atload"_zsh_autosuggest_start" \
+        zsh-users/zsh-autosuggestions \
+    OMZP::command-not-found

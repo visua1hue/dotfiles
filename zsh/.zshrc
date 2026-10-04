@@ -1,5 +1,7 @@
 # [Init]
 
+typeset -U path fpath # dedupe; brew shellenv also runs in ~/.zprofile
+
 # Homebrew
 if [[ -f "/opt/homebrew/bin/brew" ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -16,48 +18,32 @@ if [ ! -d "$ZINIT_HOME" ]; then
 fi
 source "${ZINIT_HOME}/zinit.zsh"
 
-# NVM (eager in Claude Code / non-interactive, lazy otherwise)
+# NVM: default node on PATH without sourcing nvm.sh; nvm itself loads on first call
 export NVM_DIR="$HOME/.nvm"
-
-if [[ -n "$CLAUDE_CODE" || -n "$CLAUDE_CODE_TERM" || ! -o interactive ]]; then
-    [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"
-else
-    () {
-        local ver=$(cat "$NVM_DIR/alias/default" 2>/dev/null)
-        [[ -f "$NVM_DIR/alias/$ver" ]] && ver=$(cat "$NVM_DIR/alias/$ver")
-        ver="${ver#v}"
-        local bin="$NVM_DIR/versions/node/v$ver/bin"
-        [[ -d "$bin" ]] && export PATH="$bin:$PATH"
-    }
-
-    _load_nvm() {
-        unset -f nvm node npm npx pnpm
-        [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"
-    }
-    nvm()  { _load_nvm && nvm "$@"; }
-    node() { _load_nvm && node "$@"; }
-    npm()  { _load_nvm && npm "$@"; }
-    npx()  { _load_nvm && npx "$@"; }
-    pnpm() { _load_nvm && pnpm "$@"; }
-fi
+() {
+    local ver=default i
+    for i in 1 2 3 4; do # follow alias chain: default -> lts/* -> lts/<name> -> vX
+        [[ -f $NVM_DIR/alias/$ver ]] || break
+        ver=$(<$NVM_DIR/alias/$ver)
+    done
+    [[ $ver == (node|stable) ]] && ver=
+    local bins=($NVM_DIR/versions/node/v${ver#v}*/bin(N/nOn)) # newest match first
+    (( $#bins )) && path=($bins[1] $path)
+}
+nvm() { unfunction nvm; source /opt/homebrew/opt/nvm/nvm.sh; nvm "$@"; }
 
 # [PATH Exports]
 
 export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
+path=($HOME/.local/bin $BUN_INSTALL/bin $path)
+fpath+=($BUN_INSTALL) # _bun completion, picked up by compinit
 
 # [Interactive Shell]
 
 if [[ -o interactive ]]; then
-  eval "$(oh-my-posh init zsh --config ~/.config/zsh/zen.toml)"
-  precmd() { echo }
-  source ~/.config/zsh/modules.zsh
-  source ~/.config/zsh/keybindings.zsh
-  export _ZO_DOCTOR=0
-  eval "$(zoxide init --cmd cd zsh)"
-  [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+    eval "$(oh-my-posh init zsh --config ~/.config/zsh/zen.toml)"
+    precmd() { echo }
+    source ~/.config/zsh/modules.zsh
+    source ~/.config/zsh/keybindings.zsh
+    eval "$(zoxide init --cmd cd zsh)" # must stay last
 fi
-
-# bun completions
-[ -s "/Users/visualhue/.bun/_bun" ] && source "/Users/visualhue/.bun/_bun"
