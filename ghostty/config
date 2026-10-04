@@ -43,26 +43,36 @@ macos-window-shadow = false
 # https://ghostty.org/docs/config/keybind#modifiers
 # https://ghostty.org/docs/config/keybind/reference
 
-# Reload ~/.config/ghostty/config
+# Reload config
 keybind = command+r=reload_config
 
 # Fetch for updates
 keybind = command+shift+u=check_for_updates
 
-# Delete from cursor to start of line
+# Delete from cursor to start of line (Default)
 keybind = command+backspace=text:\x15
 
-# Clear the visible screen (and scrollback)
-keybind = command+k=clear_screen
-
-# Move cursor to beginning/end of line
+# Jump to start / end of line (Default)
 keybind = command+left=text:\x01
 keybind = command+right=text:\x05
 
-# Move cursor one word left / right
-keybind = command+shift+left=esc:b
-keybind = command+shift+right=esc:f
+# Jump one word backward / forward (Default)
+keybind = alt+left=esc:b
+keybind = alt+right=esc:f
+
+# Clear the visible screen (and scrollback) (Default)
+keybind = command+k=clear_screen
 
 # Scroll to the previous / next shell prompt (requires shell-integration)
 keybind = ctrl+shift+up=jump_to_prompt:-1
 keybind = ctrl+shift+down=jump_to_prompt:1
+
+# New tab (Default)
+keybind = command+t=new_tab
+
+# Close tab / pane (Default)
+keybind = command+w=close_surface
+
+# New split right / down (Default)
+keybind = command+d=new_split:right
+keybind = command+shift+d=new_split:down
