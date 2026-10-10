@@ -14,7 +14,8 @@
 
   "workbench.activityBar.location": "top",
   "workbench.colorCustomizations": {
-    "editorCursor.foreground": "#59f8f8"
+    "editorCursor.foreground": "#59f8f8",
+    "gitlens.trailingLineForegroundColor": "#71717a80"
   },
   "workbench.colorTheme": "Anysphere",
   "workbench.editor.showIcons": false,
@@ -46,6 +47,9 @@
   "editor.scrollbar.horizontal": "auto",
   "editor.scrollbar.vertical": "auto",
   "editor.tabSize": 2,
+  "editor.tokenColorCustomizations": {
+    "comments": "#71717a"
+  },
   "editor.unicodeHighlight.ambiguousCharacters": false,
 
   "diffEditor.hideUnchangedRegions.enabled": true,
